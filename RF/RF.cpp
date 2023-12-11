@@ -129,7 +129,8 @@ int knn(int k, const std::vector<float>& queryData, const std::vector<FileInfo>&
 }
 
 
-std::vector<FileInfo> kMeansClustering(int k, std::vector<FileInfo>& data) {
+std::vector<FileInfo> kMeansClustering(int k,  std::vector<FileInfo>& alldata) {
+    std::vector<FileInfo> data = alldata;
     if (data.empty()) {
         std::cerr << "Error: No data provided." << std::endl;
         return {};
@@ -259,19 +260,22 @@ int main() {
     }; // class 5
 
     // Example usage
-    std::string folderPath = "C://Users//caggi//OneDrive//Bureau//test";
+    std::string folderPath = "C://Users//caggi//OneDrive//Bureau//GFD";
     std::vector<FileInfo> fileInfos;
 
     processFilesInFolder(folderPath, fileInfos);
 
-    for (const auto& dataPoint : fileInfos) {
-        std::cout << "Centroid Number: " << dataPoint.classNumber << ", ";
+    /*for (const auto& dataPoint : fileInfos) {
+        std::cout << "class Number: " << dataPoint.classNumber << ", " << std::endl;
+        for (const auto& element : dataPoint.fileData) {
+            std::cout << element << ", ";
+        }
         std::cout << " ***** " << std::endl;
-    }
+    }*/
 
 
 
-    /*int cls = knn(10, GFD_2, fileInfos);
+    int cls = knn(5, GFD_2, fileInfos);
 
         std::cout << cls << std::endl;
 
@@ -286,32 +290,32 @@ int main() {
     std::vector<DataPoint> checks;
 
     for (const auto& fileInfo : fileInfos) {
-    // Access the class number and the data vector
-    int classNumber = fileInfo.classNumber;
-    std::vector<float> dataVector = fileInfo.fileData;
+        // Access the class number and the data vector
+        int classNumber = fileInfo.classNumber;
+        std::vector<float> dataVector = fileInfo.fileData;
 
 
-    std::cout << " Class number" << " ";
-    std::cout << classNumber << std::endl;
-    for (const auto& element : dataVector) {
-        std::cout << element << ", ";
-    }
-    std::cout << std::endl;
+        //std::cout << " Class number" << " ";
+        //std::cout << classNumber << std::endl;
+       /* for (const auto& element : dataVector) {
+            std::cout << element << ", ";
+        }*/
+        //std::cout << std::endl;
 
-    int preds = kMeansPred(dataVector, finalCentroids);
+        int preds = kMeansPred(dataVector, finalCentroids);
 
-    DataPoint p;
-    p.classNumber = classNumber;
-    p.centroidNumber = preds;
+        DataPoint p;
+        p.classNumber = classNumber;
+        p.centroidNumber = preds;
 
-    checks.emplace_back(p);
+        checks.emplace_back(p);
     }
 
     for (const auto& dataPoint : checks) {
         std::cout << "Centroid Number: " << dataPoint.centroidNumber << ", ";
         std::cout << "Class Number: " << dataPoint.classNumber << std::endl;
         std::cout << " ***** " << std::endl;
-    }*/
+    }
 
 
 
