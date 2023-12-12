@@ -3,9 +3,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <random>
 
-DatasetLoader::DatasetLoader(std::string folderPath, float split)
+DatasetLoader::DatasetLoader(std::string folderPath, int seed, float trainingRatio)
 {
+    //Load the images and separate them by class
     for (const auto& entry : std::filesystem::directory_iterator(folderPath)) {
         if (entry.is_regular_file()) {
             // Get the file name from the path
@@ -45,6 +47,32 @@ DatasetLoader::DatasetLoader(std::string folderPath, float split)
             }
         }
     }
+
+    std::default_random_engine rng(seed);
+
+    //Split each class using the given split ratio
+    for (auto& [key, classVector] : dataset)
+    {
+        // shuffling the data
+        std::shuffle(classVector.begin(), classVector.end(), rng);
+        // split the data
+        int trainingCount = classVector.size() * trainingRatio;
+        for (int i = 0; i < trainingCount; ++i)
+        {
+            trainingData.push_back(classVector[i]);
+        }
+        for (int i = trainingCount; i < classVector.size(); ++i)
+        {
+            evaluationData.push_back(classVector[i]);
+        }
+    }
+
+}
+
+DatasetLoader::DatasetLoader(std::string folderPath, float trainingRatio)
+    :
+    DatasetLoader(folderPath, std::random_device()(), trainingRatio)
+{
 }
 
 DataPoint::DataPoint(int classIndex, std::vector<float> data)

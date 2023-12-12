@@ -15,7 +15,10 @@ class DatasetLoader
 public:
 
 public:
-	DatasetLoader(std::string folderPath, float split = 0.8f);
+	DatasetLoader(std::string folderPath, int seed, float trainingRatio = 0.8f);
+	DatasetLoader(std::string folderPath, float trainingRatio = 0.8f);
 private:
 	std::map<int,std::vector<DataPoint>> dataset;
+	std::vector<DataPoint> trainingData;
+	std::vector<DataPoint> evaluationData;
 };
