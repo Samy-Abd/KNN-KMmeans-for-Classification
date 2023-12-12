@@ -130,6 +130,7 @@ int knn(int k, const std::vector<float>& queryData, const std::vector<FileInfo>&
 
 
 std::vector<FileInfo> kMeansClustering(int k,  std::vector<FileInfo>& alldata) {
+    //TODO : Remove the reference to all data to avoid making a copy manually
     std::vector<FileInfo> data = alldata;
     if (data.empty()) {
         std::cerr << "Error: No data provided." << std::endl;
@@ -137,6 +138,7 @@ std::vector<FileInfo> kMeansClustering(int k,  std::vector<FileInfo>& alldata) {
     }
 
     // generating a random device to randomize the data vector
+    //TODO : Use a fixed seed to always generate the same results
     std::random_device rd;
     std::default_random_engine rng(rd());
 
@@ -148,6 +150,7 @@ std::vector<FileInfo> kMeansClustering(int k,  std::vector<FileInfo>& alldata) {
     std::vector<FileInfo> centroids(shfl.begin(), shfl.begin() + k);
 
     // Number of iterations (you may adjust this based on your requirements)
+    // TODO : Add stop condition
     const int maxIterations = 100;
 
     for (int iteration = 0; iteration < maxIterations; ++iteration) {
