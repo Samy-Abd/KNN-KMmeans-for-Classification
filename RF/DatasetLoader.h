@@ -5,6 +5,7 @@
 
 //Represents a datapoint along with the class it belongs to.
 struct DataPoint {
+	DataPoint() = default;
 	DataPoint(int classIndex, std::vector<float> data);
 	int classIndex;
 	std::vector<float> data;
