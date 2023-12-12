@@ -56,7 +56,7 @@ DatasetLoader::DatasetLoader(std::string folderPath, int seed, float trainingRat
         // shuffling the data
         std::shuffle(classVector.begin(), classVector.end(), rng);
         // split the data
-        int trainingCount = classVector.size() * trainingRatio;
+        int trainingCount = int(classVector.size() * trainingRatio);
         for (int i = 0; i < trainingCount; ++i)
         {
             trainingData.push_back(classVector[i]);
@@ -73,6 +73,16 @@ DatasetLoader::DatasetLoader(std::string folderPath, float trainingRatio)
     :
     DatasetLoader(folderPath, std::random_device()(), trainingRatio)
 {
+}
+
+const std::vector<DataPoint>& DatasetLoader::GetTrainingData() const
+{
+    return trainingData;
+}
+
+const std::vector<DataPoint>& DatasetLoader::GetEvaluationData() const
+{
+    return evaluationData;
 }
 
 DataPoint::DataPoint(int classIndex, std::vector<float> data)

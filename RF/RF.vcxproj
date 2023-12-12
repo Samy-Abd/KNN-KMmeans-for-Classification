@@ -130,11 +130,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DatasetLoader.cpp" />
+    <ClCompile Include="KNNAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RF.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatasetLoader.h" />
+    <ClInclude Include="KNNAlgorithm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

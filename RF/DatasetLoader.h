@@ -13,10 +13,11 @@ struct DataPoint {
 class DatasetLoader
 {
 public:
-
-public:
 	DatasetLoader(std::string folderPath, int seed, float trainingRatio = 0.8f);
 	DatasetLoader(std::string folderPath, float trainingRatio = 0.8f);
+public:
+	const std::vector<DataPoint>& GetTrainingData() const;
+	const std::vector<DataPoint>& GetEvaluationData() const;
 private:
 	std::map<int,std::vector<DataPoint>> dataset;
 	std::vector<DataPoint> trainingData;
