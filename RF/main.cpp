@@ -3,6 +3,7 @@
 #include <filesystem>
 #include "KMeansClustering.h"
 
+
 int main()
 {
 	std::filesystem::path currentPath = std::filesystem::current_path();

@@ -133,6 +133,7 @@
     <ClCompile Include="KMeansClustering.cpp" />
     <ClCompile Include="KNNAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Metrics.cpp" />
     <ClCompile Include="RF.cpp" />
   </ItemGroup>
   <ItemGroup>
