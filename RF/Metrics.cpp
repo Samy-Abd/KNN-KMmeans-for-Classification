@@ -1,12 +1,9 @@
-#include <vector>
+#include "metrics.h"
 #include <algorithm>
 #include <numeric>
 
 namespace metrics {
 
-    using ConfusionMatrix = std::vector<std::vector<int>>;
-
-    // Function to create a confusion matrix
     ConfusionMatrix create_confusion_matrix(const std::vector<int>& true_labels, const std::vector<int>& predicted_labels, int num_classes) {
         ConfusionMatrix matrix(num_classes, std::vector<int>(num_classes, 0));
         for (size_t i = 0; i < true_labels.size(); ++i) {
@@ -15,7 +12,6 @@ namespace metrics {
         return matrix;
     }
 
-    // Function to calculate accuracy
     float accuracy(const ConfusionMatrix& matrix) {
         int total = 0, correct = 0;
         for (size_t i = 0; i < matrix.size(); ++i) {
@@ -27,7 +23,6 @@ namespace metrics {
         return total > 0 ? static_cast<float>(correct) / total : 0;
     }
 
-    // Function to calculate precision for each class
     std::vector<float> precision(const ConfusionMatrix& matrix) {
         std::vector<float> precisions(matrix.size(), 0);
         for (size_t i = 0; i < matrix.size(); ++i) {
@@ -40,7 +35,6 @@ namespace metrics {
         return precisions;
     }
 
-    // Function to calculate recall for each class
     std::vector<float> recall(const ConfusionMatrix& matrix) {
         std::vector<float> recalls(matrix.size(), 0);
         for (size_t i = 0; i < matrix.size(); ++i) {
@@ -50,7 +44,6 @@ namespace metrics {
         return recalls;
     }
 
-    // Function to calculate F1 score for each class
     std::vector<float> f1_score(const std::vector<float>& precisions, const std::vector<float>& recalls) {
         std::vector<float> f1_scores(precisions.size(), 0);
         for (size_t i = 0; i < precisions.size(); ++i) {
@@ -59,4 +52,4 @@ namespace metrics {
         return f1_scores;
     }
 
-}
+} // namespace metrics

@@ -140,6 +140,7 @@
     <ClInclude Include="DatasetLoader.h" />
     <ClInclude Include="KMeansClustering.h" />
     <ClInclude Include="KNNAlgorithm.h" />
+    <ClInclude Include="Metrics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

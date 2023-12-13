@@ -2,7 +2,7 @@
 #include "KNNAlgorithm.h"
 #include <filesystem>
 #include "KMeansClustering.h"
-
+#include "Metrics.h"
 
 int main()
 {

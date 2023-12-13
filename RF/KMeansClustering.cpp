@@ -2,7 +2,6 @@
 #include <random>
 #include <limits>
 #include <assert.h>
-
 KMeansClustering::KMeansClustering(int k, const DatasetLoader& datasetLoader, int maxIterations)
 	:
 	k(k),
