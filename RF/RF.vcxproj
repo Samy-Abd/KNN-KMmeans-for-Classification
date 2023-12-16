@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="DatasetLoader.cpp" />
     <ClCompile Include="KMeansClustering.cpp" />
+    <ClCompile Include="KMeansEval.cpp" />
     <ClCompile Include="KNNAlgorithm.cpp" />
     <ClCompile Include="KNNEval.cpp" />
     <ClCompile Include="main.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="DatasetLoader.h" />
     <ClInclude Include="KMeansClustering.h" />
+    <ClInclude Include="KMeansEval.h" />
     <ClInclude Include="KNNAlgorithm.h" />
     <ClInclude Include="KNNEval.h" />
     <ClInclude Include="Metrics.h" />

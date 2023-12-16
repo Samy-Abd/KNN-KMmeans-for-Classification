@@ -37,5 +37,4 @@ private:
 	KNNAlgorithm knn;
 	const DatasetLoader& datasetLoader;
 	int seed;
-	std::vector<int> kList;
 };
