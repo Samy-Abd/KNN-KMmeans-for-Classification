@@ -3,6 +3,7 @@
 #include <filesystem>
 #include "KMeansClustering.h"
 #include "Metrics.h"
+#include "KNNEval.h"
 
 int main()
 {
@@ -15,5 +16,8 @@ int main()
 	KMeansClustering kMeans(9, datasetLoader);
 	kMeans.Fit();
 	kMeans.Predict(datasetLoader.GetEvaluationData());
+
+	KNNEval knnEval = KNNEval(datasetLoader);
+	knnEval.Evaluate(10);
 	return 0;
 }

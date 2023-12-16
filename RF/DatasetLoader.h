@@ -16,6 +16,7 @@ class DatasetLoader
 public:
 	DatasetLoader(std::string folderPath, int seed, float trainingRatio = 0.8f);
 	DatasetLoader(std::string folderPath, float trainingRatio = 0.8f);
+	int GetClassCount() const;
 public:
 	const std::vector<DataPoint>& GetTrainingData() const;
 	const std::vector<DataPoint>& GetEvaluationData() const;

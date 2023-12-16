@@ -75,6 +75,11 @@ DatasetLoader::DatasetLoader(std::string folderPath, float trainingRatio)
 {
 }
 
+int DatasetLoader::GetClassCount() const
+{
+    return dataset.size();
+}
+
 const std::vector<DataPoint>& DatasetLoader::GetTrainingData() const
 {
     return trainingData;

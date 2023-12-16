@@ -132,6 +132,7 @@
     <ClCompile Include="DatasetLoader.cpp" />
     <ClCompile Include="KMeansClustering.cpp" />
     <ClCompile Include="KNNAlgorithm.cpp" />
+    <ClCompile Include="KNNEval.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Metrics.cpp" />
     <ClCompile Include="RF.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="DatasetLoader.h" />
     <ClInclude Include="KMeansClustering.h" />
     <ClInclude Include="KNNAlgorithm.h" />
+    <ClInclude Include="KNNEval.h" />
     <ClInclude Include="Metrics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
