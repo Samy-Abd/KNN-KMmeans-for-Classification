@@ -18,6 +18,8 @@ int main()
 	kMeans.Predict(datasetLoader.GetEvaluationData());
 
 	KNNEval knnEval = KNNEval(datasetLoader);
-	knnEval.Evaluate(10);
+	KNNMetrics knnMetrics = knnEval.Evaluate(10);
+	KNNEval::PrintConfusionMatrix(knnMetrics.confusionMatrix);
+	KNNEval::PrintMetrics(knnMetrics);
 	return 0;
 }

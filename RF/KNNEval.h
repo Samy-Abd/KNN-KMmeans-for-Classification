@@ -14,6 +14,7 @@ struct PrecisionRecallF1
 struct KNNMetrics
 {
 	float accuracy;
+	ConfusionMatrix confusionMatrix;
 	std::vector<PrecisionRecallF1> classesPrecisionRecallF1;
 };
 
@@ -25,6 +26,7 @@ public:
 public:
 	KNNMetrics Evaluate(int k);
 	static void PrintConfusionMatrix(const ConfusionMatrix& confusionMatrix);
+	static void PrintMetrics(const KNNMetrics& metrics);
 private:
     ConfusionMatrix calculateConfusionMatrix(const std::vector<int>& predicted, const std::vector<DataPoint>& actual, int numClasses);
     float calculateAccuracy(const std::vector<int>& predicted, const std::vector<DataPoint>& actual);
