@@ -18,6 +18,7 @@ void PrintMetrics(const Metrics& metrics)
 {
     std::cout << std::fixed << std::cout.precision(2);
     std::cout << "Accuracy : " << metrics.accuracy * 100 << "%\n";
+    std::cout << "Prediction time : " << metrics.time * 1000 << " ms\n";
     for (int i = 0; i < metrics.classesPrecisionRecallF1.size(); ++i)
     {
         std::cout << "class " << i + 1 << "\n";

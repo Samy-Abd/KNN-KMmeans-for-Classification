@@ -1,6 +1,8 @@
 #include "KNNEval.h"
 #include <random>
 #include <iostream>
+#include "Timer.h"
+
 
 KNNEval::KNNEval(const DatasetLoader& datasetLoader)
     :
@@ -9,14 +11,14 @@ KNNEval::KNNEval(const DatasetLoader& datasetLoader)
 {
 }
 
-
-
-
 Metrics KNNEval::Evaluate(int k)
 {
 	const std::vector<DataPoint>& evaluationData = datasetLoader.GetEvaluationData();
     Metrics metrics;
+    //Measure the time it takes to predict
+    Timer timer;
 	std::vector<int> results = knn.Predict(k, evaluationData);
+    metrics.time = timer.Mark();
     metrics.accuracy = calculateAccuracy(results, evaluationData);
     metrics.confusionMatrix = calculateConfusionMatrix(results, evaluationData, datasetLoader.GetClassCount());
    for (int classIndex = 0; classIndex < datasetLoader.GetClassCount(); ++classIndex)

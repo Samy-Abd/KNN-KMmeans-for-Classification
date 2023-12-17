@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <assert.h>
+#include "Timer.h"
 
 std::vector<ClusterInfo> KMeansEval::GetClusterInfo(const KMeansClustering& kmeans, const std::vector<DataPoint>& dataPoints) {
     std::vector<ClusterInfo> clusterInfos(kmeans.GetK());
@@ -53,6 +54,7 @@ int KMeansEval::PredictOne(const DataPoint& datapoint)
 std::vector<int> KMeansEval::Predict(std::vector<DataPoint> datapoints)
 {
     std::vector<int> results;
+    results.reserve(datapoints.size());
     for (const DataPoint& query : datapoints)
     {
         results.push_back(PredictOne(query));
@@ -83,9 +85,11 @@ Metrics KMeansEval::Evaluate()
 {
     const std::vector<DataPoint>& evaluationData = datasetLoader.GetEvaluationData();
     // Map the clusters to their majority classes
-    std::vector<int>  results= Predict(evaluationData);
-	//Calculate the metrics.
+    Timer timer;
     Metrics metrics;
+    std::vector<int>  results= Predict(evaluationData);
+    metrics.time = timer.Mark();
+	//Calculate the metrics.
     metrics.accuracy = calculateAccuracy(results, evaluationData);
     metrics.confusionMatrix = calculateConfusionMatrix(results, evaluationData, datasetLoader.GetClassCount());
     for (int classIndex = 0; classIndex < datasetLoader.GetClassCount(); ++classIndex)

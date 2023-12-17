@@ -2,6 +2,8 @@
 #include <random>
 #include <limits>
 #include <assert.h>
+#include "Timer.h"
+
 KMeansClustering::KMeansClustering(int k, const DatasetLoader& datasetLoader, int maxIterations)
 	:
 	k(k),
@@ -11,11 +13,12 @@ KMeansClustering::KMeansClustering(int k, const DatasetLoader& datasetLoader, in
 	
 }
 
-void KMeansClustering::Fit(int seed)
+float KMeansClustering::Fit(int seed)
 {
 	std::default_random_engine rng(seed);
 	std::vector<DataPoint> trainingDataCopy = datasetLoader.GetTrainingData();
 
+    Timer timer;
 	std::shuffle(trainingDataCopy.begin(), trainingDataCopy.end(), rng);
 
 	// Initialize centroids with the first k data points
@@ -63,12 +66,12 @@ void KMeansClustering::Fit(int seed)
     }
 
     this->centroids = centroids;
-
+    return timer.Mark();
 }
 
-void KMeansClustering::Fit()
+float KMeansClustering::Fit()
 {
-	Fit(std::random_device()());
+    return Fit(std::random_device()());
 }
 
 int KMeansClustering::PredictOne(const DataPoint& dataPoint) const

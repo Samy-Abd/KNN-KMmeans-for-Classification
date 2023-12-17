@@ -20,15 +20,13 @@ int main()
 	PrintConfusionMatrix(knnMetrics.confusionMatrix);
 	PrintMetrics(knnMetrics);
 
-
-
-	KMeansClustering kMeans(9, datasetLoader);
-	kMeans.Fit();
-	auto kek = kMeans.Predict(datasetLoader.GetEvaluationData());
+	std::cout << "\n\n------------Kmeans metrics----------\n\n";
+	KMeansClustering kMeans(9, datasetLoader,1000);
+	float time = kMeans.Fit();
+	std::cout<< "Training time : " << time << " ms\n";
 
 	KMeansEval kMeansEval(kMeans, datasetLoader);
 	Metrics kmeansMetrics = kMeansEval.Evaluate();
-	std::cout << "------------Kmeans metrics----------\n\n\n";
 	PrintConfusionMatrix(kmeansMetrics.confusionMatrix);
 	PrintMetrics(kmeansMetrics);
 	return 0;

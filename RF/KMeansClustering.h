@@ -7,8 +7,8 @@ class KMeansClustering
 public:
 	KMeansClustering(int k, const DatasetLoader& datasetLoader, int maxIterations = 100);
 public:
-	void Fit(int seed);
-	void Fit();
+	float Fit(int seed);
+	float Fit();
 	int PredictOne(const DataPoint& dataPoint) const;
 	std::vector<int> Predict(std::vector<DataPoint> queryList) const;
 	int GetK() const;

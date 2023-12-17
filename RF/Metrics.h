@@ -12,6 +12,7 @@ struct PrecisionRecallF1
 struct Metrics
 {
 	float accuracy;
+	float time;
 	ConfusionMatrix confusionMatrix;
 	std::vector<PrecisionRecallF1> classesPrecisionRecallF1;
 };
