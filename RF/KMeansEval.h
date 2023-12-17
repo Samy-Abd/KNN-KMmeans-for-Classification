@@ -2,7 +2,6 @@
 #include "DatasetLoader.h"
 #include "KMeansClustering.h"
 
-
 struct ClusterInfo {
 	std::vector<float> centroid;
 	int majorityClass;
@@ -11,12 +10,16 @@ struct ClusterInfo {
 class KMeansEval
 {
 public:
-	KMeansEval(int k, const DatasetLoader& datasetLoader,int maxIterations, int seed);
+	KMeansEval(const KMeansClustering& kmeans, const DatasetLoader& datasetLoader);
 public:
 	void Evaluate();
 	std::vector<ClusterInfo> GetClusterInfo(const KMeansClustering& kmeans, const std::vector<DataPoint>& dataPoints);
+	int PredictOne(const DataPoint& datapoint);
+	std::vector<int> Predict(std::vector<DataPoint> datapoints);
 private:
-	KMeansClustering kMeans;
-	int k;
+	float EucledianDistance(const std::vector<float>& point1, const std::vector<float>& point2) const;
+private:
+	const KMeansClustering& kMeans;
 	const DatasetLoader& datasetLoader;
+	std::vector<ClusterInfo> clustersInfo;
 };

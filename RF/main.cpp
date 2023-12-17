@@ -9,14 +9,10 @@
 int main()
 {
 	std::filesystem::path currentPath = std::filesystem::current_path();
-	DatasetLoader datasetLoader{ currentPath.string() + "\\..\\images\\E34", 5};
+	DatasetLoader datasetLoader{ currentPath.string() + "\\..\\images\\GFD", 5};
 	KNNAlgorithm knn(datasetLoader);
 	int result = knn.PredictOne(10, datasetLoader.GetEvaluationData()[9]);
 	std::vector<int> results = knn.Predict(10, datasetLoader.GetEvaluationData());
-
-	KMeansClustering kMeans(9, datasetLoader);
-	kMeans.Fit(7);
-	auto kek = kMeans.Predict(datasetLoader.GetEvaluationData());
 
 	KNNEval knnEval = KNNEval(datasetLoader);
 	KNNMetrics knnMetrics = knnEval.Evaluate(3);
@@ -24,7 +20,12 @@ int main()
 	KNNEval::PrintMetrics(knnMetrics);
 
 
-	KMeansEval kMeansEval(9, datasetLoader, 100, 9);
+
+	KMeansClustering kMeans(9, datasetLoader);
+	kMeans.Fit(2);
+	auto kek = kMeans.Predict(datasetLoader.GetEvaluationData());
+
+	KMeansEval kMeansEval(kMeans, datasetLoader);
 	kMeansEval.Evaluate();
 	return 0;
 }
