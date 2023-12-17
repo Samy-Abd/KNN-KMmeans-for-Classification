@@ -1,0 +1,90 @@
+Mean kmeans metrics for k = 9 :
+Confusion matrix :
+Accuracy : 0.411481%; time : 0.34485 ms;fitting time :0.472977ms
+class 1
+Precision : 9.20724%    Recall : 29%    f1 score : 13.5915%
+class 2
+Precision : 16.9413%    Recall : 29.3333%       f1 score : 19.5236%
+class 3
+Precision : 58.069%     Recall : 95.6667%       f1 score : 70.111%
+class 4
+Precision : 72.5833%    Recall : 69.3333%       f1 score : 68.25%
+class 5
+Precision : 17.973%     Recall : 51%    f1 score : 25.5151%
+class 6
+Precision : 21.9127%    Recall : 32.3333%       f1 score : 25.5941%
+class 7
+Precision : 32.9952%    Recall : 19.3333%       f1 score : 22.1952%
+class 8
+Precision : 14.8739%    Recall : 23.6667%       f1 score : 16.729%
+class 9
+Precision : 33.4679%    Recall : 20.6667%       f1 score : 23.274%
+
+
+Mean kmeans metrics for k = 13 :
+Confusion matrix :
+Accuracy : 0.490741%; time : 0.476674 ms;fitting time :0.658745ms
+class 1
+Precision : 18.7397%    Recall : 35.3333%       f1 score : 23.2703%
+class 2
+Precision : 24.2298%    Recall : 32.6667%       f1 score : 25.8978%
+class 3
+Precision : 68.9048%    Recall : 96.3333%       f1 score : 77.9861%
+class 4
+Precision : 83.2667%    Recall : 82.3333%       f1 score : 80.3905%
+class 5
+Precision : 28.4219%    Recall : 62.6667%       f1 score : 37.9756%
+class 6
+Precision : 44.1321%    Recall : 55.6667%       f1 score : 48.1717%
+class 7
+Precision : 49.0333%    Recall : 31.6667%       f1 score : 35.3893%
+class 8
+Precision : 21.8488%    Recall : 26%    f1 score : 22.5965%
+class 9
+Precision : 31.85%      Recall : 19%    f1 score : 22.0611%
+
+
+Mean kmeans metrics for k = 18 :
+Confusion matrix :
+Accuracy : 0.544074%; time : 0.669016 ms;fitting time :0.879181ms
+class 1
+Precision : 32.0957%    Recall : 49%    f1 score : 36.7702%
+class 2
+Precision : 21.1714%    Recall : 22.6667%       f1 score : 19.5442%
+class 3
+Precision : 85.4393%    Recall : 95%    f1 score : 87.7193%
+class 4
+Precision : 85.1167%    Recall : 89.3333%       f1 score : 85.169%
+class 5
+Precision : 32.4672%    Recall : 58.3333%       f1 score : 40.6265%
+class 6
+Precision : 69.5238%    Recall : 85.6667%       f1 score : 75.4159%
+class 7
+Precision : 53.9452%    Recall : 39%    f1 score : 42.3762%
+class 8
+Precision : 29.4139%    Recall : 34.6667%       f1 score : 29.9664%
+class 9
+Precision : 33.2167%    Recall : 16%    f1 score : 20.4524%
+
+
+Mean kmeans metrics for k = 72 :
+Confusion matrix :
+Accuracy : 0.692223%; time : 2.59625 ms;fitting time :3.45159ms
+class 1
+Precision : 52.919%     Recall : 68%    f1 score : 56.5866%
+class 2
+Precision : 55.5833%    Recall : 41.3333%       f1 score : 45.2476%
+class 3
+Precision : 93.1667%    Recall : 98.6667%       f1 score : 95.3524%
+class 4
+Precision : 92.9167%    Recall : 94%    f1 score : 92.5809%
+class 5
+Precision : 50.1786%    Recall : 58%    f1 score : 51.4667%
+class 6
+Precision : 86.2%       Recall : 100%   f1 score : 91.9166%
+class 7
+Precision : 93.25%      Recall : 76.6667%       f1 score : 81.4143%
+class 8
+Precision : 50.6464%    Recall : 67%    f1 score : 55.3851%
+class 9
+Precision : 47% Recall : 19.3333%       f1 score : 26.7%

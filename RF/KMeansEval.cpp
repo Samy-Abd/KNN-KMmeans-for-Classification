@@ -39,9 +39,10 @@ int KMeansEval::PredictOne(const DataPoint& datapoint)
     assert(this->clustersInfo.size() > 0); //If assertion fails : Fit() was not called before trying to predict.
     float minDistance = std::numeric_limits<float>::max();
     int predictedClass = -1;
-
+    float lastDistance = 0;
     for (size_t i = 0; i < clustersInfo.size(); ++i) {
         float distance = EucledianDistance(datapoint.data, clustersInfo[i].centroid);
+        lastDistance = distance;
         if (distance < minDistance) {
             minDistance = distance;
             predictedClass = clustersInfo[i].majorityClass;

@@ -34,7 +34,7 @@ int main()
 
 	//Do the kmeans fitting multiple times with different seeds and measure the time.
 	constexpr int KMEANS_EVALUATION_ITERATIONS = 10;
-	constexpr int KMEANS_MAX_ITERATIONS = 100;
+	constexpr int KMEANS_MAX_ITERATIONS = 5;
 	constexpr int KMEANS_K = 9;
 	constexpr int KNN_K = 9;
 
@@ -43,14 +43,6 @@ int main()
 	std::vector<Metrics> knnMetrics;
 	int knnKList[] = {1,3,5,15,datasetLoader.GetTrainingData().size()};
 
-	for (int i = 0; i < KMEANS_EVALUATION_ITERATIONS; ++i)
-	{
-		KMeansClustering kmeans(KMEANS_K, datasetLoader, KMEANS_MAX_ITERATIONS);
-		float time = kmeans.Fit();
-		KMeansEval kMeansEval(kmeans, datasetLoader);
-		kmeansMetrics.push_back(kMeansEval.Evaluate());
-		kMeansFitTime.push_back(time);
-	}
 
 	//Generate 100 ints randomly.
 	std::mt19937 mt(10);
@@ -100,12 +92,12 @@ int main()
 		for (PrecisionRecallF1& precisionRecallF1 : meanKnnMetrics.classesPrecisionRecallF1)
 		{
 			precisionRecallF1.f1Score = precisionRecallF1.f1Score / divider;
-			precisionRecallF1.precision = precisionRecallF1.f1Score / divider;
-			precisionRecallF1.recall = precisionRecallF1.f1Score / divider;
+			precisionRecallF1.precision = precisionRecallF1.precision / divider;
+			precisionRecallF1.recall = precisionRecallF1.recall / divider;
 		}
 		knnMeansByK.push_back(meanKnnMetrics);
 	}
-
+	//Print the mean results for every k
 	for (int i = 0; i < knnMeansByK.size(); ++i)
 	{
 		Metrics metrics = knnMeansByK[i];
@@ -122,104 +114,103 @@ int main()
 			std::cout << "\n";
 		}
 	}
-	// Calculate the mean for knn and kmeans
-	Metrics meanKnnMetrics;
-	Metrics meanKmeansMetrics;
-	//Initialize knn metrics to 0
-	meanKnnMetrics.accuracy = 0;
-	meanKnnMetrics.time = 0;
-	meanKnnMetrics.classesPrecisionRecallF1.resize(datasetLoader.GetClassCount());
 
-	for (PrecisionRecallF1& precisionRecallF1 : meanKnnMetrics.classesPrecisionRecallF1)
+	//KMEANS //////////////////////////////////////////////////////
+
+	//Evaluate kmeans with different dataset seeds
+	//Generate 100 ints randomly.
+	std::mt19937 mt2(10);
+	std::vector<int> seedListKmeans;
+	for (int i = 0; i < 100; ++i)
 	{
-		precisionRecallF1.f1Score = 0;
-		precisionRecallF1.precision = 0;
-		precisionRecallF1.recall = 0;
+		seedListKmeans.push_back(mt2());
 	}
+	std::vector<Metrics> kMeansByK;
+	std::vector<float> kMeansFitByK;
 
-	//Initialize kmeans metrics to 0
-	meanKmeansMetrics.accuracy = 0;
-	meanKmeansMetrics.time = 0;
-	meanKmeansMetrics.classesPrecisionRecallF1.resize(datasetLoader.GetClassCount());
-	for (PrecisionRecallF1& precisionRecallF1 : meanKmeansMetrics.classesPrecisionRecallF1)
+
+	int kmeansKList[] = { 9, 13, 18, datasetLoader.GetTrainingData().size() };
+	for (int k : kmeansKList)
 	{
-		precisionRecallF1.f1Score = 0;
-		precisionRecallF1.precision = 0;
-		precisionRecallF1.recall = 0;
-	}
-
-
-	//Add all of the values for knn
-	for (const Metrics& metrics : knnMetrics)
-	{
-		meanKnnMetrics.accuracy += metrics.accuracy;
-		meanKnnMetrics.time += metrics.time;
-		for (int i = 0; i < meanKnnMetrics.classesPrecisionRecallF1.size(); ++i)
+		std::vector<Metrics> metricsForK;
+		std::vector<float> fittimeForK;
+		for (int seed : seedListKmeans)
 		{
-			meanKnnMetrics.classesPrecisionRecallF1[i].precision += metrics.classesPrecisionRecallF1[i].precision;
-			meanKnnMetrics.classesPrecisionRecallF1[i].recall += metrics.classesPrecisionRecallF1[i].recall;
-			meanKnnMetrics.classesPrecisionRecallF1[i].f1Score += metrics.classesPrecisionRecallF1[i].f1Score;
+			DatasetLoader datasetLoader{ currentPath.string() + "\\..\\images\\" + REPRESENTATION, seed };
+			KMeansClustering kmeans(k, datasetLoader, KMEANS_MAX_ITERATIONS);
+			float time = kmeans.Fit();
+			KMeansEval kMeansEval(kmeans, datasetLoader);
+			metricsForK.push_back(kMeansEval.Evaluate());
+			//TODO : continue here
+			fittimeForK.push_back(time);
 		}
-	}
+		Metrics meanMetrics;
+		//Initialize knn metrics to 0
+		meanMetrics.accuracy = 0;
+		meanMetrics.time = 0;
+		meanMetrics.classesPrecisionRecallF1.resize(datasetLoader.GetClassCount());
 
-	//Add all of the values for kmeans
-	for (const Metrics& metrics : kmeansMetrics)
-	{
-		meanKmeansMetrics.accuracy += metrics.accuracy;
-		meanKmeansMetrics.time += metrics.time;
-		for (int i = 0; i < meanKmeansMetrics.classesPrecisionRecallF1.size(); ++i)
+		for (PrecisionRecallF1& precisionRecallF1 : meanMetrics.classesPrecisionRecallF1)
 		{
-			meanKmeansMetrics.classesPrecisionRecallF1[i].precision += metrics.classesPrecisionRecallF1[i].precision;
-			meanKmeansMetrics.classesPrecisionRecallF1[i].recall += metrics.classesPrecisionRecallF1[i].recall;
-			meanKmeansMetrics.classesPrecisionRecallF1[i].f1Score += metrics.classesPrecisionRecallF1[i].f1Score;
+			precisionRecallF1.f1Score = 0;
+			precisionRecallF1.precision = 0;
+			precisionRecallF1.recall = 0;
 		}
-	}
-	//Divide the values for knn
-	int divider = knnMetrics.size();
-	meanKnnMetrics.accuracy = meanKnnMetrics.accuracy / divider;
-	meanKnnMetrics.time = meanKnnMetrics.time / divider;
-	for (PrecisionRecallF1& precisionRecallF1 : meanKnnMetrics.classesPrecisionRecallF1)
-	{
-		precisionRecallF1.f1Score = precisionRecallF1.f1Score / divider;
-		precisionRecallF1.precision = precisionRecallF1.f1Score / divider;
-		precisionRecallF1.recall = precisionRecallF1.f1Score / divider;
+		for (const Metrics& metrics : metricsForK)
+		{
+			meanMetrics.accuracy += metrics.accuracy;
+			meanMetrics.time += metrics.time;
+			for (int i = 0; i < meanMetrics.classesPrecisionRecallF1.size(); ++i)
+			{
+				meanMetrics.classesPrecisionRecallF1[i].precision += metrics.classesPrecisionRecallF1[i].precision;
+				meanMetrics.classesPrecisionRecallF1[i].recall += metrics.classesPrecisionRecallF1[i].recall;
+				meanMetrics.classesPrecisionRecallF1[i].f1Score += metrics.classesPrecisionRecallF1[i].f1Score;
+			}
+		}
+		//Divide the values for kmeans
+		int divider = metricsForK.size();
+		meanMetrics.accuracy = meanMetrics.accuracy / divider;
+		meanMetrics.time = meanMetrics.time / divider;
+		for (PrecisionRecallF1& precisionRecallF1 : meanMetrics.classesPrecisionRecallF1)
+		{
+			precisionRecallF1.f1Score = precisionRecallF1.f1Score / divider;
+			precisionRecallF1.precision = precisionRecallF1.precision / divider;
+			precisionRecallF1.recall = precisionRecallF1.recall / divider;
+		}
+		//Also calculate the mean for the fit time
+		float meanFitTime = 0;
+		for (float time : fittimeForK)
+		{
+			meanFitTime += time;
+		}
+		meanFitTime /= fittimeForK.size();
+
+		//Push the means
+		kMeansByK.push_back(meanMetrics);
+		kMeansFitByK.push_back(meanFitTime);
+
 	}
 
-	//Divide the values for kmeans
-	 divider = kmeansMetrics.size();
-	meanKmeansMetrics.accuracy = meanKmeansMetrics.accuracy / divider;
-	meanKmeansMetrics.time = meanKmeansMetrics.time / divider;
-	for (PrecisionRecallF1& precisionRecallF1 : meanKmeansMetrics.classesPrecisionRecallF1)
-	{
-		precisionRecallF1.f1Score = precisionRecallF1.f1Score / divider;
-		precisionRecallF1.precision = precisionRecallF1.f1Score / divider;
-		precisionRecallF1.recall = precisionRecallF1.f1Score / divider;
-	}
 	
-	float meanFitTime = 0;
-	for (float time : kMeansFitTime)
+	//Print the mean results for every k
+	for (int i = 0; i < kMeansByK.size(); ++i)
 	{
-		meanFitTime += time;
+		Metrics metrics = kMeansByK[i];
+		float fitTime = kMeansFitByK[i];
+		std::cout << "\n\nMean kmeans metrics for k = " << kmeansKList[i] << " :\n";
+		std::cout << "Confusion matrix :\n";
+		PrintConfusionMatrix(metrics.confusionMatrix);
+		std::cout << "Accuracy : " << metrics.accuracy << "%; " << "time : " << metrics.time * 1000 << " ms;" << "fitting time :" << fitTime * 100 << "ms\n";
+		for (int j = 0; j < metrics.classesPrecisionRecallF1.size(); ++j)
+		{
+			std::cout << "class " << j + 1 << "\n";
+			std::cout << "Precision : " << metrics.classesPrecisionRecallF1[j].precision * 100 << "%\t";
+			std::cout << "Recall : " << metrics.classesPrecisionRecallF1[j].recall * 100 << "%\t";
+			std::cout << "f1 score : " << metrics.classesPrecisionRecallF1[j].f1Score * 100 << "%\t";
+			std::cout << "\n";
+		}
 	}
-	meanFitTime /= kMeansFitTime.size();
 
-	//Print everything
 
-	//for (int i = 0; i < knnMetrics.size(); ++i)
-	//{
-	//	Metrics metrics = knnMetrics[i];
-	//	std::cout << "\n\nKNN metrics for k = " << knnKList[i] << " :\n";
-	//	std::cout << "Confusion matrix :\n";
-	//	PrintConfusionMatrix(metrics.confusionMatrix);
-	//	std::cout << "Accuracy : " << metrics.accuracy << "%; " << "time : " << metrics.time * 1000 << " ms\n";
-	//	for (int j = 0; j < metrics.classesPrecisionRecallF1.size(); ++j)
-	//	{
-	//		std::cout << "class " << j + 1 << "\n";
-	//		std::cout << "Precision : " << metrics.classesPrecisionRecallF1[j].precision * 100 << "%\t";
-	//		std::cout << "Recall : " << metrics.classesPrecisionRecallF1[j].recall * 100 << "%\t";
-	//		std::cout << "f1 score : " << metrics.classesPrecisionRecallF1[j].f1Score * 100 << "%\t";
-	//		std::cout << "\n";
-	//	}
-	//}
 	return 0;
 }
