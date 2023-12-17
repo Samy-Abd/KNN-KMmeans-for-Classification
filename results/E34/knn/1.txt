@@ -1,0 +1,161 @@
+dataset seed : 7
+
+
+KNN metrics for k = 1 :
+Confusion matrix :
+3 0 0 0 0 0 0 0 0
+0 2 0 0 0 0 0 0 2
+0 0 3 0 0 0 1 0 0
+0 0 0 3 0 0 0 0 0
+0 0 0 0 2 0 0 1 0
+0 1 0 0 0 2 0 0 0
+0 0 0 0 0 0 2 0 0
+0 0 0 0 1 0 0 2 1
+0 0 0 0 0 1 0 0 0
+Accuracy : 0.703704%; time : 0.3655 ms
+class 1
+Precision : 100%        Recall : 100%   f1 score : 100%
+class 2
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 3
+Precision : 75% Recall : 100%   f1 score : 85.7143%
+class 4
+Precision : 100%        Recall : 100%   f1 score : 100%
+class 5
+Precision : 66.6667%    Recall : 66.6667%       f1 score : 66.6667%
+class 6
+Precision : 66.6667%    Recall : 66.6667%       f1 score : 66.6667%
+class 7
+Precision : 100%        Recall : 66.6667%       f1 score : 80%
+class 8
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%
+
+
+KNN metrics for k = 3 :
+Confusion matrix :
+2 0 0 0 0 0 0 1 2
+1 2 0 0 0 1 0 0 0
+0 0 3 0 0 0 1 0 0
+0 0 0 3 0 0 0 0 0
+0 0 0 0 2 0 0 0 0
+0 1 0 0 0 2 0 0 0
+0 0 0 0 0 0 2 0 0
+0 0 0 0 1 0 0 2 1
+0 0 0 0 0 0 0 0 0
+Accuracy : 0.666667%; time : 0.3795 ms
+class 1
+Precision : 40% Recall : 66.6667%       f1 score : 50%
+class 2
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 3
+Precision : 75% Recall : 100%   f1 score : 85.7143%
+class 4
+Precision : 100%        Recall : 100%   f1 score : 100%
+class 5
+Precision : 100%        Recall : 66.6667%       f1 score : 80%
+class 6
+Precision : 66.6667%    Recall : 66.6667%       f1 score : 66.6667%
+class 7
+Precision : 100%        Recall : 66.6667%       f1 score : 80%
+class 8
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%
+
+
+KNN metrics for k = 5 :
+Confusion matrix :
+2 0 0 0 0 0 0 0 2
+1 2 0 0 0 0 0 0 1
+0 0 3 0 0 0 1 0 0
+0 0 0 2 0 0 0 0 0
+0 0 0 0 2 0 0 1 0
+0 1 0 1 0 2 0 0 0
+0 0 0 0 0 0 2 0 0
+0 0 0 0 1 1 0 2 0
+0 0 0 0 0 0 0 0 0
+Accuracy : 0.62963%; time : 0.3562 ms
+class 1
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 2
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 3
+Precision : 75% Recall : 100%   f1 score : 85.7143%
+class 4
+Precision : 100%        Recall : 66.6667%       f1 score : 80%
+class 5
+Precision : 66.6667%    Recall : 66.6667%       f1 score : 66.6667%
+class 6
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 7
+Precision : 100%        Recall : 66.6667%       f1 score : 80%
+class 8
+Precision : 50% Recall : 66.6667%       f1 score : 57.1429%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%
+
+
+KNN metrics for k = 15 :
+Confusion matrix :
+1 0 0 0 1 0 0 0 0
+1 1 0 0 0 0 0 0 1
+0 0 3 2 0 0 3 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 2 0 0 3 1
+0 2 0 1 0 2 0 0 0
+0 0 0 0 0 0 0 0 0
+1 0 0 0 0 1 0 0 1
+0 0 0 0 0 0 0 0 0
+Accuracy : 0.333333%; time : 0.3552 ms
+class 1
+Precision : 50% Recall : 33.3333%       f1 score : 40%
+class 2
+Precision : 33.3333%    Recall : 33.3333%       f1 score : 33.3333%
+class 3
+Precision : 37.5%       Recall : 100%   f1 score : 54.5455%
+class 4
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 5
+Precision : 33.3333%    Recall : 66.6667%       f1 score : 44.4444%
+class 6
+Precision : 40% Recall : 66.6667%       f1 score : 50%
+class 7
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 8
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%
+
+
+KNN metrics for k = 72 :
+Confusion matrix :
+3 3 3 3 3 3 3 3 3
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+Accuracy : 0.111111%; time : 0.4258 ms
+class 1
+Precision : 11.1111%    Recall : 100%   f1 score : 20%
+class 2
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 3
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 4
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 5
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 6
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 7
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 8
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%

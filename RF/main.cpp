@@ -10,7 +10,7 @@
 int main()
 {
 	std::filesystem::path currentPath = std::filesystem::current_path();
-	DatasetLoader datasetLoader{ currentPath.string() + "\\..\\images\\SA", 5};
+	DatasetLoader datasetLoader{ currentPath.string() + "\\..\\images\\E34", 7};
 	//KNNAlgorithm knn(datasetLoader);
 	//int result = knn.PredictOne(10, datasetLoader.GetEvaluationData()[9]);
 	//std::vector<int> results = knn.Predict(10, datasetLoader.GetEvaluationData());
@@ -136,5 +136,24 @@ int main()
 		meanFitTime += time;
 	}
 	meanFitTime /= kMeansFitTime.size();
+
+	//Print everything
+
+	for (int i = 0; i < knnMetrics.size(); ++i)
+	{
+		Metrics metrics = knnMetrics[i];
+		std::cout << "\n\nKNN metrics for k = " << knnKList[i] << " :\n";
+		std::cout << "Confusion matrix :\n";
+		PrintConfusionMatrix(metrics.confusionMatrix);
+		std::cout << "Accuracy : " << metrics.accuracy << "%; " << "time : " << metrics.time * 1000 << " ms\n";
+		for (int j = 0; j < metrics.classesPrecisionRecallF1.size(); ++j)
+		{
+			std::cout << "class " << j + 1 << "\n";
+			std::cout << "Precision : " << metrics.classesPrecisionRecallF1[j].precision * 100 << "%\t";
+			std::cout << "Recall : " << metrics.classesPrecisionRecallF1[j].recall * 100 << "%\t";
+			std::cout << "f1 score : " << metrics.classesPrecisionRecallF1[j].f1Score * 100 << "%\t";
+			std::cout << "\n";
+		}
+	}
 	return 0;
 }

@@ -2,12 +2,11 @@
 
 void PrintConfusionMatrix(const ConfusionMatrix& confusionMatrix)
 {
-    std::cout << "Predicted label on top, real label on the left\n";
     for (int i = 0; i < confusionMatrix.size(); ++i)
     {
         for (int j = 0; j < confusionMatrix.size(); ++j)
         {
-            std::cout << confusionMatrix[i][j] << ' ';
+            std::cout << confusionMatrix[j][i] << ' ';
         }
         std::cout << "\n";
     }
