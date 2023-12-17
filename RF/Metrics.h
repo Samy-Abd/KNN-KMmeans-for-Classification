@@ -1,14 +1,22 @@
 #pragma once
 #include <vector>
+#include <iostream>
+using ConfusionMatrix = std::vector<std::vector<int>>;
 
-namespace metrics {
+struct PrecisionRecallF1
+{
+	float precision;
+	float recall;
+	float f1Score;
+};
+struct Metrics
+{
+	float accuracy;
+	ConfusionMatrix confusionMatrix;
+	std::vector<PrecisionRecallF1> classesPrecisionRecallF1;
+};
 
-    using ConfusionMatrix = std::vector<std::vector<int>>;
 
-    ConfusionMatrix create_confusion_matrix(const std::vector<int>& true_labels, const std::vector<int>& predicted_labels, int num_classes);
-    float accuracy(const ConfusionMatrix& matrix);
-    std::vector<float> precision(const ConfusionMatrix& matrix);
-    std::vector<float> recall(const ConfusionMatrix& matrix);
-    std::vector<float> f1_score(const std::vector<float>& precisions, const std::vector<float>& recalls);
+void PrintConfusionMatrix(const ConfusionMatrix& confusionMatrix);
 
-} // namespace metrics
+void PrintMetrics(const Metrics& metrics);

@@ -12,10 +12,10 @@ KNNEval::KNNEval(const DatasetLoader& datasetLoader)
 
 
 
-KNNMetrics KNNEval::Evaluate(int k)
+Metrics KNNEval::Evaluate(int k)
 {
 	const std::vector<DataPoint>& evaluationData = datasetLoader.GetEvaluationData();
-    KNNMetrics metrics;
+    Metrics metrics;
 	std::vector<int> results = knn.Predict(k, evaluationData);
     metrics.accuracy = calculateAccuracy(results, evaluationData);
     metrics.confusionMatrix = calculateConfusionMatrix(results, evaluationData, datasetLoader.GetClassCount());
@@ -29,33 +29,7 @@ KNNMetrics KNNEval::Evaluate(int k)
     return metrics;
 }
 
-void KNNEval::PrintConfusionMatrix(const ConfusionMatrix& confusionMatrix)
-{
-    std::cout << "Predicted label on top, real label on the left\n";
-    for (int i = 0; i < confusionMatrix.size(); ++i)
-    {
-        for (int j = 0; j < confusionMatrix.size(); ++j)
-        {
-            std::cout << confusionMatrix[i][j] << ' ';
-        }
-        std::cout << "\n";
-    }
- 
-}
 
-void KNNEval::PrintMetrics(const KNNMetrics& metrics)
-{
-    std::cout << std::fixed;
-    std::cout << "Accuracy : " << metrics.accuracy << "%\n";
-    for (int i = 0; i < metrics.classesPrecisionRecallF1.size(); ++i)
-    {
-        std::cout << "class " << i + 1 << "\n";
-        std::cout << "Precision : " << metrics.classesPrecisionRecallF1[i].precision << "%\t";
-        std::cout << "Recall : " << metrics.classesPrecisionRecallF1[i].recall << "%\t";
-        std::cout << "f1 score : " << metrics.classesPrecisionRecallF1[i].f1Score << "%\t";
-        std::cout << "\n";
-    }
-}
 
 ConfusionMatrix KNNEval::calculateConfusionMatrix(const std::vector<int>&predicted, const std::vector<DataPoint>&actual, int numClasses)
 {

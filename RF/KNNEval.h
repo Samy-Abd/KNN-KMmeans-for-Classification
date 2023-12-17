@@ -2,21 +2,8 @@
 #include <vector>
 #include "DatasetLoader.h"
 #include "KNNAlgorithm.h"
+#include "Metrics.h"
 
-using ConfusionMatrix = std::vector<std::vector<int>>;
-
-struct PrecisionRecallF1
-{
-	float precision;
-	float recall;
-	float f1Score;
-};
-struct KNNMetrics
-{
-	float accuracy;
-	ConfusionMatrix confusionMatrix;
-	std::vector<PrecisionRecallF1> classesPrecisionRecallF1;
-};
 
 
 class KNNEval
@@ -24,9 +11,7 @@ class KNNEval
 public:
 	KNNEval(const DatasetLoader& datasetLoader);
 public:
-	KNNMetrics Evaluate(int k);
-	static void PrintConfusionMatrix(const ConfusionMatrix& confusionMatrix);
-	static void PrintMetrics(const KNNMetrics& metrics);
+	Metrics Evaluate(int k);
 private:
     ConfusionMatrix calculateConfusionMatrix(const std::vector<int>& predicted, const std::vector<DataPoint>& actual, int numClasses);
     float calculateAccuracy(const std::vector<int>& predicted, const std::vector<DataPoint>& actual);
