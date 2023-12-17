@@ -1,0 +1,114 @@
+For 100 different dataset seeds for KNN : 
+Mean KNN metrics for k = 1 :
+Confusion matrix :
+Accuracy : 0.673334%; time : 0.415483 ms
+class 1
+Precision : 0.61881%    Recall : 0.61881%       f1 score : 61.881%
+class 2
+Precision : 0.527241%   Recall : 0.527241%      f1 score : 52.7241%
+class 3
+Precision : 0.888809%   Recall : 0.888809%      f1 score : 88.8809%
+class 4
+Precision : 0.98%       Recall : 0.98%  f1 score : 98%
+class 5
+Precision : 0.597691%   Recall : 0.597691%      f1 score : 59.7691%
+class 6
+Precision : 0.858643%   Recall : 0.858643%      f1 score : 85.8643%
+class 7
+Precision : 0.59319%    Recall : 0.59319%       f1 score : 59.319%
+class 8
+Precision : 0.56473%    Recall : 0.56473%       f1 score : 56.473%
+class 9
+Precision : 0.202048%   Recall : 0.202048%      f1 score : 20.2048%
+
+
+Mean KNN metrics for k = 3 :
+Confusion matrix :
+Accuracy : 0.626297%; time : 0.375325 ms
+class 1
+Precision : 0.425986%   Recall : 0.425986%      f1 score : 42.5986%
+class 2
+Precision : 0.46329%    Recall : 0.46329%       f1 score : 46.329%
+class 3
+Precision : 0.887976%   Recall : 0.887976%      f1 score : 88.7976%
+class 4
+Precision : 0.911%      Recall : 0.911% f1 score : 91.1%
+class 5
+Precision : 0.653183%   Recall : 0.653183%      f1 score : 65.3183%
+class 6
+Precision : 0.793809%   Recall : 0.793809%      f1 score : 79.3809%
+class 7
+Precision : 0.66%       Recall : 0.66%  f1 score : 66%
+class 8
+Precision : 0.551635%   Recall : 0.551635%      f1 score : 55.1635%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%
+
+
+Mean KNN metrics for k = 5 :
+Confusion matrix :
+Accuracy : 0.590741%; time : 0.376882 ms
+class 1
+Precision : 0.338407%   Recall : 0.338407%      f1 score : 33.8407%
+class 2
+Precision : 0.427248%   Recall : 0.427248%      f1 score : 42.7248%
+class 3
+Precision : 0.880238%   Recall : 0.880238%      f1 score : 88.0238%
+class 4
+Precision : 0.785572%   Recall : 0.785572%      f1 score : 78.5572%
+class 5
+Precision : 0.612794%   Recall : 0.612794%      f1 score : 61.2794%
+class 6
+Precision : 0.714638%   Recall : 0.714638%      f1 score : 71.4638%
+class 7
+Precision : 0.644643%   Recall : 0.644643%      f1 score : 64.4643%
+class 8
+Precision : 0.621064%   Recall : 0.621064%      f1 score : 62.1064%
+class 9
+Precision : 0.005%      Recall : 0.005% f1 score : 0.5%
+
+
+Mean KNN metrics for k = 15 :
+Confusion matrix :
+Accuracy : 0.402593%; time : 0.359721 ms
+class 1
+Precision : 0.310003%   Recall : 0.310003%      f1 score : 31.0003%
+class 2
+Precision : 0.360865%   Recall : 0.360865%      f1 score : 36.0865%
+class 3
+Precision : 0.628837%   Recall : 0.628837%      f1 score : 62.8837%
+class 4
+Precision : 0.202%      Recall : 0.202% f1 score : 20.2%
+class 5
+Precision : 0.520513%   Recall : 0.520513%      f1 score : 52.0513%
+class 6
+Precision : 0.642312%   Recall : 0.642312%      f1 score : 64.2312%
+class 7
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 8
+Precision : 0.180841%   Recall : 0.180841%      f1 score : 18.0841%
+class 9
+Precision : 0.004%      Recall : 0.004% f1 score : 0.4%
+
+
+Mean KNN metrics for k = 72 :
+Confusion matrix :
+Accuracy : 0.111111%; time : 0.373863 ms
+class 1
+Precision : 0.2%        Recall : 0.2%   f1 score : 20%
+class 2
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 3
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 4
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 5
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 6
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 7
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 8
+Precision : 0%  Recall : 0%     f1 score : 0%
+class 9
+Precision : 0%  Recall : 0%     f1 score : 0%
