@@ -98,6 +98,16 @@ std::vector<int> KMeansClustering::Predict(std::vector<DataPoint> queryList) con
     return results;
 }
 
+int KMeansClustering::GetK() const
+{
+    return k;
+}
+
+const std::vector<DataPoint>& KMeansClustering::GetCentroids() const
+{
+    return centroids;
+}
+
 float KMeansClustering::EucledianDistance(const std::vector<float>& point1, const std::vector<float>& point2) const
 {
     float distance = 0.0;

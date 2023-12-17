@@ -24,7 +24,7 @@ int main()
 	KNNEval::PrintMetrics(knnMetrics);
 
 
-	KMeansEval kMeansEval(9, datasetLoader, 100, 7);
+	KMeansEval kMeansEval(9, datasetLoader, 100, 9);
 	kMeansEval.Evaluate();
 	return 0;
 }
